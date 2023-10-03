@@ -1,47 +1,72 @@
 package com.concesionario.Controller;
 
-import com.concesionario.Domain.Cliente;
-import com.concesionario.Domain.Coche;
-import org.springframework.http.HttpStatus;
+import com.concesionario.Service.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class CochesController {
-    private List<Coche> coches = new ArrayList<>();
-    @GetMapping("/coches")
-    public List<Coche> listarCoches(){
-            return coches;
-    }
+    @Autowired
+    private CarService carService;
     @PostMapping("/coches")
-    public void agregarCoche(@RequestBody Coche coche){
-        coches.add(coche);
-    }
-    @GetMapping("/coches/{indice}")
-    public ResponseEntity<Coche> buscarCoche(@PathVariable int indice) {
-        if (indice >= 1 && indice < coches.size() +1) {
-            Coche coche = coches.get(indice-1);
-            return ResponseEntity.ok(coche);
-        } else return ResponseEntity.notFound().build();
-    }
-    @GetMapping("/coches/{indice}/clientes")
-    public ResponseEntity<Cliente> buscarPropietario(@PathVariable int indice){
-        if(indice > 0 && indice < coches.size() +1){
-            Coche coche = coches.get(indice -1);
-            return ResponseEntity.ok(coche.getPropietario());
+    public void agregarCoche(@RequestBody CarInput coche) {
+        try {
+            carService.agregarCoche(coche);
+        } catch (AlreadyExistsException e) {
+            System.out.println(e.getMessage());
         }
-        else return ResponseEntity.notFound().build();
     }
-    @PostMapping("/coches/{indice}/clientes")
-    public ResponseEntity agregarClienteCoche(@PathVariable int indice, @RequestBody Cliente cliente){
-        if(indice > 0 && indice < coches.size() +1){
-            Coche coche = coches.get(indice -1);
-            coche.setPropietario(cliente);
-            return ResponseEntity.ok(null);
+    @GetMapping("/coches")
+    public ResponseEntity<List<CarOutput>> listarCoches() {
+        try{
+           List<CarOutput> coches = carService.listarCoches();
+           return ResponseEntity.ok(coches);
         }
-        else return ResponseEntity.notFound().build();
+        catch (InvalidArgumentException e){
+            return ResponseEntity.badRequest().build();
+        }
+        catch (EmptyArgumentException e){
+            return ResponseEntity.badRequest().build();
+        }
+    }
+    @PutMapping("/coches/{matricula}")
+    public ResponseEntity updateCar(@PathVariable String matricula, String marca, int anyo){
+        try{
+            CarOutput car = carService.actualizarCoche(matricula,marca, anyo);
+            return ResponseEntity.ok(car);
+        }
+        catch (CarPlateNotExistsException e){
+            System.out.println(e.getMessage());
+            return ResponseEntity.notFound().build();
+        }
+        catch (EmptyArgumentException e){
+            System.out.println(e.getMessage());
+            return ResponseEntity.badRequest().build();
+        }
+        catch (InvalidArgumentException e){
+            System.out.println(e.getMessage());
+            return ResponseEntity.badRequest().build();
+        }
+    }
+    @GetMapping("/coches/{matricula}")
+    public ResponseEntity<CarOutput> listarCoche(@PathVariable String matricula){
+        try {
+            return ResponseEntity.ok(carService.listarCoche(matricula));
+        }
+        catch (InvalidArgumentException e){
+            System.out.println(e.getMessage());
+            return ResponseEntity.badRequest().build();
+        }
+        catch (CarPlateNotExistsException e){
+            System.out.println(e.getMessage());
+            return ResponseEntity.notFound().build();
+        }
+        catch (EmptyArgumentException e){
+            System.out.println(e.getMessage());
+            return ResponseEntity.badRequest().build();
+        }
     }
 }
