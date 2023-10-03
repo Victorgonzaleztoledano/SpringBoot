@@ -33,7 +33,7 @@ public class CochesController {
         }
     }
     @PutMapping("/coches/{matricula}")
-    public ResponseEntity updateCar(@PathVariable String matricula, String marca, int anyo){
+    public ResponseEntity updateCar(@PathVariable String matricula,@RequestBody String marca,@RequestBody int anyo){
         try{
             CarOutput car = carService.actualizarCoche(matricula,marca, anyo);
             return ResponseEntity.ok(car);

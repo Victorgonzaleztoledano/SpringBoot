@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLOutput;
 import java.util.List;
 
 @RestController
@@ -35,7 +34,7 @@ public class ExpositionController {
         }
     }
     @PutMapping("exposiciones/{codExpo}")
-    public ResponseEntity<ExpositionOutput> updateExposicion(@PathVariable int codExpo, String name) {
+    public ResponseEntity<ExpositionOutput> updateExposicion(@PathVariable int codExpo,@RequestBody String name) {
         try{
             ExpositionOutput exposicion = expositionService.cambiarNombre(codExpo, name);
             return ResponseEntity.ok(exposicion);
