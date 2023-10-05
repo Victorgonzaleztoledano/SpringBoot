@@ -22,14 +22,14 @@ public class CarService {
     public List<CarOutput> listarCoches() throws InvalidArgumentException, EmptyArgumentException {
         ArrayList<CarOutput> cars = new ArrayList<>();
         for (Coche coche : coches){
-            cars.add(new CarOutput(coche.getMatricula(), coche.getModelo(), coche.getMarca(), coche.getAnyoDeFabricacion()));
+            cars.add(new CarOutputComplete(coche.getMatricula(), coche.getModelo(), coche.getMarca(), coche.getAnyoDeFabricacion()));
         }
         return cars;
     }
     public CarOutput listarCoche(String matricula) throws InvalidArgumentException, EmptyArgumentException, CarPlateNotExistsException {
         for(Coche coche : coches){
             if(coche.getMatricula().equals(matricula)){
-                return new CarOutput(matricula);
+                return new CarOutputMatr(matricula);
             }
         }
         throw new CarPlateNotExistsException("La matrícula introducida no se encuentra");
@@ -39,7 +39,7 @@ public class CarService {
             if(coche.getMatricula().equals(matricula)){
                 coche.setAnyoDeFabricacion(carUpdate.getAnyo());
                 coche.setMarca(carUpdate.getMarca());
-            return new CarOutput(coche.getMatricula(), coche.getModelo(), coche.getMarca(), coche.getAnyoDeFabricacion());
+            return new CarOutputComplete(coche.getMatricula(), coche.getModelo(), coche.getMarca(), coche.getAnyoDeFabricacion());
             }
         }
         throw new CarPlateNotExistsException("La matrícula introducida no se encuentra");

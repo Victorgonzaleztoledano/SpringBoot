@@ -25,16 +25,31 @@ public class ExpositionController {
         }
     }
     @GetMapping("/exposiciones")
-    public ResponseEntity<List<ExpositionOutput>> listarExposiciones() {
+    public ResponseEntity<List<ExpositionOutputCod>> listarExposiciones() {
         try {
-            List<ExpositionOutput> exposiciones = expositionService.listarExposiciones();
+            List<ExpositionOutputCod> exposiciones = expositionService.listarExposiciones();
             return ResponseEntity.ok(exposiciones);
         }
         catch (EmptyArgumentException e){
             return ResponseEntity.badRequest().build();
         }
     }
-    @PutMapping("exposiciones/{codExpo}")
+    @GetMapping("/exposiciones/{codExpo}")
+    public ResponseEntity<ExpositionOutput> listarExpo(@PathVariable int codExpo){
+        try{
+            ExpositionOutput expo = expositionService.listarExpo(codExpo);
+            return ResponseEntity.ok(expo);
+        }
+        catch (EmptyArgumentException e){
+            System.out.println(e.getMessage());
+            return ResponseEntity.badRequest().build();
+        }
+        catch (CodExpoNotExistsException e){
+            System.out.println(e.getMessage());
+            return ResponseEntity.notFound().build();
+        }
+    }
+    @PutMapping("/exposiciones/{codExpo}")
     public ResponseEntity<ExpositionOutput> updateExposicion(@PathVariable int codExpo,@RequestBody ExpositionUpdate expositionUpdate) {
         try{
             ExpositionOutput exposicion = expositionService.cambiarNombre(codExpo, expositionUpdate);

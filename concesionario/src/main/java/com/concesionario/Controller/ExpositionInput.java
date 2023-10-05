@@ -4,6 +4,9 @@ public class ExpositionInput {
     private int codExpo;
     private String name;
 
+    public ExpositionInput() {
+    }
+
     public ExpositionInput(int codExpo, String name) throws EmptyArgumentException, InvalidArgumentException {
         if(codExpo < 1) throw new InvalidArgumentException("La exposición debe tener un númerlo válido");
         else this.codExpo = codExpo;

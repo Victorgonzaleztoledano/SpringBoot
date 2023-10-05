@@ -20,18 +20,26 @@ public class ExpositionService {
         Exposicion exposicion = new Exposicion(expositionInput.getCodExpo(), expositionInput.getName());
         exposiciones.add(exposicion);
     }
-    public List<ExpositionOutput> listarExposiciones() throws EmptyArgumentException {
-        ArrayList<ExpositionOutput> expositions = new ArrayList<>();
+    public List<ExpositionOutputCod> listarExposiciones() throws EmptyArgumentException {
+        ArrayList<ExpositionOutputCod> expositions = new ArrayList<>();
         for (Exposicion exposicion : exposiciones) {
-            expositions.add(new ExpositionOutput(exposicion.getNumExpo(), exposicion.getNombre()));
+            expositions.add(new ExpositionOutputCod(exposicion.getNumExpo()));
         }
         return expositions;
+    }
+    public ExpositionOutput listarExpo(int codExpo) throws EmptyArgumentException, CodExpoNotExistsException {
+        for(Exposicion exposicion : exposiciones){
+            if(codExpo == exposicion.getNumExpo()){
+                return new ExpositionOutputCodName(exposicion.getNumExpo(), exposicion.getNombre());
+            }
+        }
+        throw new CodExpoNotExistsException("El código de exposición no existe");
     }
     public ExpositionOutput cambiarNombre(int codExpo, ExpositionUpdate expositionUpdate) throws EmptyArgumentException, CodExpoNotExistsException {
         for (Exposicion exposicion : exposiciones){
             if(exposicion.getNumExpo() == codExpo){
                 exposicion.setNombre(expositionUpdate.getName());
-                return new ExpositionOutput(exposicion.getNumExpo(), exposicion.getNombre());
+                return new ExpositionOutputCodName(exposicion.getNumExpo(), exposicion.getNombre());
             }
         }
         throw new CodExpoNotExistsException("El código de exposición introducido no se encuentra");
@@ -41,7 +49,7 @@ public class ExpositionService {
             if(exposicion.getNumExpo() == codExpo){
                 for (Coche coche : exposicion.getCoches()){
                     if(coche.getMatricula().equals(matricula)){
-                        return new CarOutput(matricula);
+                        return new CarOutputMatr(matricula);
                     }
                 }
                 throw new CarPlateNotExistsException("La matrícula introducida no existe");
@@ -67,7 +75,7 @@ public class ExpositionService {
             if(codExpo == exposicion.getNumExpo()){
                 ArrayList<CarOutput> coches = new ArrayList<>();
                 for (Coche coche : exposicion.getCoches()){
-                    coches.add(new CarOutput(coche.getMatricula(), coche.getMarca()));
+                    coches.add(new CarOutputMatMar(coche.getMatricula(), coche.getMarca()));
                 }
                 return coches;
             }
