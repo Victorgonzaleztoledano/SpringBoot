@@ -17,6 +17,10 @@ public class CochesController {
             carService.agregarCoche(coche);
         } catch (AlreadyExistsException e) {
             System.out.println(e.getMessage());
+        } catch (InvalidArgumentException e) {
+            System.out.println(e.getMessage());
+        } catch (EmptyArgumentException e) {
+            System.out.println(e.getMessage());
         }
     }
     @GetMapping("/coches")
@@ -33,9 +37,9 @@ public class CochesController {
         }
     }
     @PutMapping("/coches/{matricula}")
-    public ResponseEntity updateCar(@PathVariable String matricula,@RequestBody String marca,@RequestBody int anyo){
+    public ResponseEntity updateCar(@PathVariable String matricula,@RequestBody CarUpdate carUpdate){
         try{
-            CarOutput car = carService.actualizarCoche(matricula,marca, anyo);
+            CarOutput car = carService.actualizarCoche(matricula, carUpdate);
             return ResponseEntity.ok(car);
         }
         catch (CarPlateNotExistsException e){

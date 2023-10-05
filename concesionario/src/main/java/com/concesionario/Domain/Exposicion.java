@@ -1,17 +1,21 @@
 package com.concesionario.Domain;
 
+import com.concesionario.Controller.EmptyArgumentException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Exposicion {
     private int numExpo;
-    private String nombre;
-    private List<Coche> coches;
+    private String name;
+    private List<Coche> coches = new ArrayList<>();
 
-    public Exposicion(int numExpo, String nombre, List<Coche> coches) {
-        this.numExpo = numExpo;
-        this.nombre = nombre;
-        this.coches = coches;
+    public Exposicion(int numExpo, String name) throws EmptyArgumentException {
+        if(numExpo < 1) throw new EmptyArgumentException("Introduzca un código de exposición válido");
+        else this.numExpo = numExpo;
+        if(name == null) throw new EmptyArgumentException("El nombre no puede estar vacío");
+        if(name.trim().length() < 1) throw new EmptyArgumentException("Introduzca un nombre válido");
+        else this.name = name;
     }
 
     public void agregarCoche(Coche coche) {
@@ -19,11 +23,11 @@ public class Exposicion {
     }
 
     public String getNombre() {
-        return nombre;
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(String name) {
+        this.name = name;
     }
 
     public List<Coche> getCoches() {

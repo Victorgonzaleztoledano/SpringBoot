@@ -12,27 +12,26 @@ import java.util.List;
 public class ExpositionService {
     private List<Exposicion> exposiciones = new ArrayList<>();
 
-    public void agregarExpo(ExpositionInput expositionInput) throws AlreadyExistsException {
+    public void agregarExpo(ExpositionInput expositionInput) throws AlreadyExistsException, EmptyArgumentException {
         for (Exposicion exposicion : exposiciones) {
             if (exposicion.getNumExpo() == expositionInput.getCodExpo())
                 throw new AlreadyExistsException("El código de exposición ya está registrado");
         }
-        Exposicion exposicion = new Exposicion(expositionInput.getCodExpo(), expositionInput.getName(), new ArrayList<>());
+        Exposicion exposicion = new Exposicion(expositionInput.getCodExpo(), expositionInput.getName());
         exposiciones.add(exposicion);
     }
-
     public List<ExpositionOutput> listarExposiciones() throws EmptyArgumentException {
         ArrayList<ExpositionOutput> expositions = new ArrayList<>();
         for (Exposicion exposicion : exposiciones) {
-            expositions.add(new ExpositionOutput(exposicion.getNumExpo()));
+            expositions.add(new ExpositionOutput(exposicion.getNumExpo(), exposicion.getNombre()));
         }
         return expositions;
     }
-    public ExpositionOutput cambiarNombre(int codExpo, String name) throws EmptyArgumentException, CodExpoNotExistsException {
+    public ExpositionOutput cambiarNombre(int codExpo, ExpositionUpdate expositionUpdate) throws EmptyArgumentException, CodExpoNotExistsException {
         for (Exposicion exposicion : exposiciones){
             if(exposicion.getNumExpo() == codExpo){
-                exposicion.setNombre(name);
-                return new ExpositionOutput(exposicion.getNombre());
+                exposicion.setNombre(expositionUpdate.getName());
+                return new ExpositionOutput(exposicion.getNumExpo(), exposicion.getNombre());
             }
         }
         throw new CodExpoNotExistsException("El código de exposición introducido no se encuentra");
@@ -49,5 +48,30 @@ public class ExpositionService {
             }
         }
         throw new CodExpoNotExistsException("El código de exposición introducido no existe");
+    }
+    public void agregarCocheExpo(int codExpo, CarInput carInput) throws AlreadyExistsException, InvalidArgumentException, EmptyArgumentException {
+        for(Exposicion exposicion : exposiciones){
+            if(codExpo == exposicion.getNumExpo()){
+                Coche coche = new Coche(carInput.getMatricula(), carInput.getModelo(), carInput.getMarca(), carInput.getAnyo());
+                for(Coche cars : exposicion.getCoches()){
+                    if(coche.getMatricula().equals(cars.getMatricula())){
+                        throw new AlreadyExistsException("La matrícula ya está registrada en la exposición");
+                    }
+                }
+                exposicion.agregarCoche(coche);
+            }
+        }
+    }
+    public ArrayList<CarOutput> listarCochesExpo(int codExpo) throws InvalidArgumentException, EmptyArgumentException, CodExpoNotExistsException {
+        for(Exposicion exposicion : exposiciones){
+            if(codExpo == exposicion.getNumExpo()){
+                ArrayList<CarOutput> coches = new ArrayList<>();
+                for (Coche coche : exposicion.getCoches()){
+                    coches.add(new CarOutput(coche.getMatricula(), coche.getMarca()));
+                }
+                return coches;
+            }
+        }
+        throw new CodExpoNotExistsException("El código de la exposición no existe");
     }
 }

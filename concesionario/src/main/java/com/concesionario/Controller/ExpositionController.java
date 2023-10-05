@@ -1,13 +1,11 @@
 package com.concesionario.Controller;
 
-import com.concesionario.Service.AlreadyExistsException;
-import com.concesionario.Service.CarPlateNotExistsException;
-import com.concesionario.Service.CodExpoNotExistsException;
-import com.concesionario.Service.ExpositionService;
+import com.concesionario.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -22,6 +20,9 @@ public class ExpositionController {
         catch (AlreadyExistsException e) {
             System.out.println(e.getMessage());
         }
+        catch (EmptyArgumentException e){
+            System.out.println(e.getMessage());
+        }
     }
     @GetMapping("/exposiciones")
     public ResponseEntity<List<ExpositionOutput>> listarExposiciones() {
@@ -34,9 +35,9 @@ public class ExpositionController {
         }
     }
     @PutMapping("exposiciones/{codExpo}")
-    public ResponseEntity<ExpositionOutput> updateExposicion(@PathVariable int codExpo,@RequestBody String name) {
+    public ResponseEntity<ExpositionOutput> updateExposicion(@PathVariable int codExpo,@RequestBody ExpositionUpdate expositionUpdate) {
         try{
-            ExpositionOutput exposicion = expositionService.cambiarNombre(codExpo, name);
+            ExpositionOutput exposicion = expositionService.cambiarNombre(codExpo, expositionUpdate);
             return ResponseEntity.ok(exposicion);
         }
         catch (CodExpoNotExistsException e){
@@ -68,6 +69,38 @@ public class ExpositionController {
         catch (CodExpoNotExistsException e){
             System.out.println(e.getMessage());
             return ResponseEntity.notFound().build();
+        }
+    }
+    @PostMapping("/exposiciones/{codExpo}/coches")
+    public void agregarCocheAExpo(@PathVariable int codExpo, @RequestBody CarInput carInput){
+        try{
+            expositionService.agregarCocheExpo(codExpo, carInput);
+        }
+        catch (AlreadyExistsException e){
+            System.out.println(e.getMessage());
+        } catch (InvalidArgumentException e) {
+            System.out.println(e.getMessage());
+        } catch (EmptyArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    @GetMapping("/exposiciones/{codExpo}/coches")
+    public ResponseEntity<ArrayList<CarOutput>> listarCochesExpo(@PathVariable int codExpo){
+        try{
+            ArrayList<CarOutput> coches = expositionService.listarCochesExpo(codExpo);
+            return ResponseEntity.ok(coches);
+        }
+        catch (CodExpoNotExistsException e){
+            System.out.println(e.getMessage());
+            return ResponseEntity.notFound().build();
+        }
+        catch (EmptyArgumentException e){
+            System.out.println(e.getMessage());
+            return ResponseEntity.badRequest().build();
+        }
+        catch (InvalidArgumentException e){
+            System.out.println(e.getMessage());
+            return ResponseEntity.badRequest().build();
         }
     }
 }

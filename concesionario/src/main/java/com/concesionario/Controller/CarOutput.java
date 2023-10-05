@@ -5,6 +5,21 @@ public class CarOutput {
     private String modelo;
     private String marca;
     private int anyoDeFabricacion;
+    public CarOutput(String matricula) throws EmptyArgumentException, InvalidArgumentException {
+        if(matricula == null) throw new EmptyArgumentException("La matrícula no puede estar vacía");
+        if(matricula.trim().length() != 7) throw new InvalidArgumentException("La matrícula debe contener cuatro números y tres letras");
+        if(!matricula.matches("^[0-9]{4}[a-zA-Z]{3}$")) throw new InvalidArgumentException("La matrícula debe contener cuatro números y tres letras");
+        else this.matricula = matricula;
+    }
+    public CarOutput(String matricula, String marca) throws InvalidArgumentException, EmptyArgumentException {
+        if(matricula == null) throw new EmptyArgumentException("La matrícula no puede estar vacía");
+        if(matricula.trim().length() != 7) throw new InvalidArgumentException("La matrícula debe contener cuatro números y tres letras");
+        if(!matricula.matches("^[0-9]{4}[a-zA-Z]{3}$")) throw new InvalidArgumentException("La matrícula debe contener cuatro números y tres letras");
+        else this.matricula = matricula;
+        if(marca == null) throw new EmptyArgumentException("La marca no puede estar vacía");
+        if(marca.trim().length() < 1) throw new InvalidArgumentException("Introduzca una marca válida");
+        else this.marca = marca;
+    }
 
     public CarOutput(String matricula, String modelo, String marca, int anyoDeFabricacion) throws EmptyArgumentException, InvalidArgumentException {
         if(matricula == null) throw new EmptyArgumentException("La matrícula no puede estar vacía");
@@ -20,24 +35,6 @@ public class CarOutput {
         if(anyoDeFabricacion < 1990) throw new InvalidArgumentException("Introduzca un año de fabricación válido");
         else this.anyoDeFabricacion = anyoDeFabricacion;
     }
-
-    public CarOutput(String matricula, String marca) throws InvalidArgumentException, EmptyArgumentException {
-        if(matricula == null) throw new EmptyArgumentException("La matrícula no puede estar vacía");
-        if(matricula.trim().length() != 7) throw new InvalidArgumentException("La matrícula debe contener cuatro números y tres letras");
-        if(!matricula.matches("^[0-9]{4}[a-zA-Z]{3}$")) throw new InvalidArgumentException("La matrícula debe contener cuatro números y tres letras");
-        else this.matricula = matricula;
-        if(marca == null) throw new EmptyArgumentException("La marca no puede estar vacía");
-        if(marca.trim().length() < 1) throw new InvalidArgumentException("Introduzca una marca válida");
-        else this.marca = marca;
-    }
-
-    public CarOutput(String matricula) throws EmptyArgumentException, InvalidArgumentException {
-        if(matricula == null) throw new EmptyArgumentException("La matrícula no puede estar vacía");
-        if(matricula.trim().length() != 7) throw new InvalidArgumentException("La matrícula debe contener cuatro números y tres letras");
-        if(!matricula.matches("^[0-9]{4}[a-zA-Z]{3}$")) throw new InvalidArgumentException("La matrícula debe contener cuatro números y tres letras");
-        else this.matricula = matricula;
-    }
-
     public String getMatricula() {
         return matricula;
     }

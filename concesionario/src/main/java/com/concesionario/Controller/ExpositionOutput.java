@@ -1,13 +1,11 @@
 package com.concesionario.Controller;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class ExpositionOutput {
     private int codExpo;
     private String name;
-
-    public ExpositionOutput(int codExpo) throws EmptyArgumentException {
-        if(codExpo < 1) throw new EmptyArgumentException("Introduzca un código de exposición válido");
-        else this.codExpo = codExpo;
-    }
 
     public ExpositionOutput(String name) throws EmptyArgumentException {
         if(name == null) throw new EmptyArgumentException("El nombre no puede estar vacío");
