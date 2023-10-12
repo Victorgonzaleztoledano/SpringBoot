@@ -4,17 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1b2a82d3-c1df-4c78-a090-b5688182bc30" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/SpringBoot/concesionario/src/main/java/com/concesionario/ConcesionarioApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpringBoot/concesionario/src/main/java/com/concesionario/ConcesionarioApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpringBoot/concesionario/src/main/java/com/concesionario/Controller/CarInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpringBoot/concesionario/src/main/java/com/concesionario/Controller/CarInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpringBoot/concesionario/src/main/java/com/concesionario/Controller/CarOutputComplete.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpringBoot/concesionario/src/main/java/com/concesionario/Controller/CarOutputComplete.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpringBoot/concesionario/src/main/java/com/concesionario/Controller/CochesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpringBoot/concesionario/src/main/java/com/concesionario/Controller/CochesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpringBoot/concesionario/src/main/java/com/concesionario/Controller/ExpositionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpringBoot/concesionario/src/main/java/com/concesionario/Controller/ExpositionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpringBoot/concesionario/src/main/java/com/concesionario/Controller/ExpositionOutputCodName.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpringBoot/concesionario/src/main/java/com/concesionario/Controller/ExpositionOutputCodName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpringBoot/concesionario/src/main/java/com/concesionario/Domain/Coche.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpringBoot/concesionario/src/main/java/com/concesionario/Domain/Coche.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpringBoot/concesionario/src/main/java/com/concesionario/Domain/Exposicion.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpringBoot/concesionario/src/main/java/com/concesionario/Domain/Exposicion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpringBoot/concesionario/src/main/java/com/concesionario/Service/CarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpringBoot/concesionario/src/main/java/com/concesionario/Service/CarService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SpringBoot/concesionario/src/main/java/com/concesionario/Service/ExpositionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/SpringBoot/concesionario/src/main/java/com/concesionario/Service/ExpositionService.java" afterDir="false" />
+    <list default="true" id="dd19ecf2-cf4f-44de-b3ab-cfe4a05ffc72" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/concesionario/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/concesionario/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/concesionario/src/main/java/com/concesionario/ConcesionarioApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/concesionario/src/main/java/com/concesionario/ConcesionarioApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/concesionario/src/main/java/com/concesionario/Controller/CarInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/concesionario/src/main/java/com/concesionario/Controller/CarInput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/concesionario/src/main/java/com/concesionario/Controller/CarOutputComplete.java" beforeDir="false" afterPath="$PROJECT_DIR$/concesionario/src/main/java/com/concesionario/Controller/CarOutputComplete.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/concesionario/src/main/java/com/concesionario/Controller/CochesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/concesionario/src/main/java/com/concesionario/Controller/CochesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/concesionario/src/main/java/com/concesionario/Controller/ExpositionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/concesionario/src/main/java/com/concesionario/Controller/ExpositionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/concesionario/src/main/java/com/concesionario/Controller/ExpositionOutputCodName.java" beforeDir="false" afterPath="$PROJECT_DIR$/concesionario/src/main/java/com/concesionario/Controller/ExpositionOutputCodName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/concesionario/src/main/java/com/concesionario/Domain/Coche.java" beforeDir="false" afterPath="$PROJECT_DIR$/concesionario/src/main/java/com/concesionario/Domain/Coche.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/concesionario/src/main/java/com/concesionario/Domain/Exposicion.java" beforeDir="false" afterPath="$PROJECT_DIR$/concesionario/src/main/java/com/concesionario/Domain/Exposicion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/concesionario/src/main/java/com/concesionario/Service/CarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/concesionario/src/main/java/com/concesionario/Service/CarService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/concesionario/src/main/java/com/concesionario/Service/ExpositionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/concesionario/src/main/java/com/concesionario/Service/ExpositionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/concesionario/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/concesionario/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,28 +31,9 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <task path="$PROJECT_DIR$/concesionario">
-          <activation />
-        </task>
         <projects_view>
           <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="concesionario" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="concesionario" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="concesionario" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="application" type="c8890929:TasksNode$1" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </tree_state>
         </projects_view>
@@ -65,65 +48,28 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/SpringBoot" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProjectId" id="2VtdZUYW698bSSGsYFn39E4a20W" />
+  <component name="ProjectId" id="2WXNBRKhWclwj8BfRw4ReP3gLlR" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "full.screen.before.presentation.mode": "false",
-    "last_opened_file_path": "C:/Users/victo/Curso2023/testRepository/SpringBoot"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/victo/Curso2023/SpringBoot/SpringBoot&quot;
   }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.concesionario.Service" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="concesionario [bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/concesionario" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--stacktrace" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="bootRun" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <ForceTestExec>false</ForceTestExec>
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Gradle.concesionario [bootRun]" />
-      </list>
-    </recent_temporary>
-  </component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1b2a82d3-c1df-4c78-a090-b5688182bc30" name="Changes" comment="" />
-      <created>1695659367307</created>
+      <changelist id="dd19ecf2-cf4f-44de-b3ab-cfe4a05ffc72" name="Changes" comment="" />
+      <created>1696874828943</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1695659367307</updated>
+      <updated>1696874828943</updated>
     </task>
     <servers />
   </component>
